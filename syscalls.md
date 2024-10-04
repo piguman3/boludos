@@ -5,19 +5,21 @@ layout: page
 
 # Syscalls from BrainFuck
 ## Because why not
-The interpreter has various syscalls to access the hardware of the system, because BrainFuck doesn't really have the functionality for this.
+The interpreter has various syscalls to access the hardware of the system, because BrainFuck doesn't have the functionality for this.
 
 How a syscall works is, basically:
 
-BrainFuck uses the out `.` instruction to output a string of chars with this format to do a system call:
+The BrainFuck code uses the out `.` instruction to output a string of chars with this format to do a system call:
 ```
 [SYSTEMCALL]<params>
 ```
+4 chars for the syscall's name, and then the parameters
+
 For example, to print "Hello world", you do:
 ```
 PRNTHello World\0
 ```
-Not all syscalls end with null chars, only the ones that use strings do.
+Not all syscalls end with null chars, only the ones that use strings do (SCPX, setCursorPosX, for example, receives a C `short` for its parameter).
 
 To receive the output from a syscall, we repeatedly call the in `,` instruction until we receive all the bytes we want.
 For example, to get the output from the `READ` syscall, which returns a null terminated string:
