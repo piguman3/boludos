@@ -2,5 +2,7 @@ title: BoluDOS Operating System
 description: A CC OS for people who hate themselves
 theme: just-the-docs
 
+search_enabled: true
+
 url: https://piguman3.github.io/boludos
 
