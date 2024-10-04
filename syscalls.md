@@ -19,7 +19,7 @@ For example, to print "Hello world", you do:
 ```
 PRNTHello World\0
 ```
-Not all syscalls end with null chars, only the ones that use strings do this. (SCPX, setCursorPosX, for example, receives a C `short` for its parameter, without any null chars)
+Not all syscalls end with null chars, only the ones that use strings do this. (SCPX, setCursorPosX, for example, receives a C `short`, 2 chars in big endian, for its parameter, without any null chars)
 
 To receive the output from a syscall, we repeatedly call the in `,` instruction until we receive all the bytes we want.
 For example, to get the output from the `READ` syscall, which returns a null terminated string:
