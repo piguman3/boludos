@@ -44,4 +44,4 @@ void read(int[] s, int size) {
 int input[40];
 read(input, 40);
 ```
-#### Example written in C, this would need to be compiled with c2bf.
+##### Example written in C, this would need to be compiled with c2bf.
