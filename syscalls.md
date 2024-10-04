@@ -8,6 +8,7 @@ layout: page
 The interpreter has various syscalls to access the hardware of the system, because BrainFuck doesn't really have the functionality for this.
 
 How a syscall works is, basically:
+
 BrainFuck uses the out `.` instruction to output a string of chars with this format to do a system call:
 ```
 [SYSTEMCALL]<params>
