@@ -15,7 +15,7 @@ The BrainFuck code uses the out `.` instruction to output a string of chars with
 ```
 4 chars for the syscall's name, and then the parameters
 
-For example, to print "Hello world", you do:
+For example, to print "Hello world", without any line breaks:
 ```
 PRNTHello World\0
 ```
