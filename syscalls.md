@@ -13,7 +13,7 @@ The BrainFuck code uses the out `.` instruction to output a string of chars with
 ```
 [SYSTEMCALL]<params>
 ```
-4 chars for the syscall's name, and then the parameters
+4 chars for the syscall's name, and then the parameters.
 
 For example, to print "Hello world", without any line breaks:
 ```
