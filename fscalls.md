@@ -102,7 +102,7 @@ Executes given filename with the bfk.lua Brainfuck interpreter the OS uses.
 
 ```c
 //Example code with syslib.h
-exec(filename);
+execInDir(currentDir, command)
 
 //Example code with only lib.h
 f(syssend, "EXEC");
