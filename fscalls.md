@@ -190,7 +190,7 @@ bool exists = (read_char() == 1);
 ### FCPY : `1 char`, size of the source filename, `string` for source filename, null terminated `string` for the destination filename.
 Copies a file from a source path to a destination path
 
-```
+```c
 //Example code with syslib.h
 fscopy(currentDir, fileA, fileB);
 
@@ -211,7 +211,7 @@ sysend();
 ### FMOV : `1 char`, size of the source filename, `string` for source filename, null terminated `string` for the destination filename.
 Moves a file from a source path to a destination path
 
-```
+```c
 //Example code with syslib.h
 fsmove(currentDir, fileA, fileB);
 
