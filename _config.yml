@@ -4,5 +4,7 @@ theme: just-the-docs
 
 search_enabled: true
 
+color_scheme: dark
+
 url: https://piguman3.github.io/boludos
 
