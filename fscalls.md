@@ -100,7 +100,7 @@ fsgetindex(currentDir, x, filename, DIR_SIZE);
 
 //Example code with only lib.h
 f(syssend, "GTLS");
-write_char(index);
+write_char(index+1); //Because, Lua
 syssend(currentDir);
 sysend();
 sysread(out, size);
