@@ -1,5 +1,9 @@
 # File system syscalls
 
+- Note: More read and write fs instructions will be added in the future for ease of use (Read all, write X bytecount)
+
+- Another note: The `f` macro will be used a lot here, so learn how it works first!
+
 Syscalls for interacting with ComputerCraft's file system. Like CC's file system, all paths are absolute, which is why many syslib functions include a "currentDir" parameter for ease of use.
 
 Opened file handles are stored in a "file slot" table. To interact with most of the functions regarding file manipulation you will need to know the file slot of the file you have opened.
@@ -102,7 +106,7 @@ Executes given filename with the bfk.lua Brainfuck interpreter the OS uses.
 
 ```c
 //Example code with syslib.h
-execInDir(currentDir, command)
+execInDir(currentDir, command);
 
 //Example code with only lib.h
 f(syssend, "EXEC");
@@ -110,10 +114,60 @@ syssend(filename);
 sysend();
 ```
 
-### MDIR
-### DELF
-### WRTE
-### EDIR
+### MDIR : 1 null terminated `string` for path name.
+Creates the given path.
+
+```c
+//Example code with syslib.h
+makeDir(currentDir, dirName);
+
+//Example code with only lib.h
+f(syssend, "MDIR");
+syssend(path);
+sysend();
+```
+
+### DELF : 1 null terminated `string` for path name.
+Deletes the given path.
+
+```c
+//Example code with syslib.h
+deletePath(currentDir, dirName);
+
+//Example code with only lib.h
+f(syssend, "DELF");
+syssend(path);
+sysend();
+```
+
+### WRTE : 1 `char` for fileslot, null terminated `string` for what to write
+Writes a string to the given fileslot
+
+```c
+//Example code with syslib.h
+fswrite(file, text);
+
+//Example code with only lib.h
+f(syssend, "WRTE");
+write_char(fileslot);
+syssend(string);
+sysend();
+```
+
+### EDIR : null terminated `string` for path
+Check if path exists and if it's a directory, returns either 0 or 1
+
+```c
+//Example code with syslib.h
+bool exists = fsexists(name, currentDir);
+
+//Example code with only lib.h
+f(syssend, "EDIR");
+syssend(path);
+sysend();
+bool exists = (read_char() == 1);
+```
+
 ### EFIL
 ### FCPY
 ### FMOV
