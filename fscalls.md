@@ -17,7 +17,6 @@ int file = fsopen(currentDir, filename, 'w', 'b');
 f(syssend, "OPEN");
 write_char('w');
 write_char('b');
-syssend(currentDir);
 syssend(filename);
 sysend();
 int file = read_char();
@@ -36,7 +35,7 @@ f(syssend, "CLOS");
 write_char(fileslot);
 ```
 
-### REAB : `1 char` for the file slot, `1 short` for how many bytes to read
+### REAB : `1 char` for the file slot, `1 short` for how many bytes to read.
 Read bytes from an open file slot.
 (Current C implementation doesn't support reading more than 255 chars at once, but the syscall supports reading up to 65536 bytes at once)
 
@@ -52,7 +51,7 @@ write_short(size);
 sysread(out, size);
 ```
 
-### SIZE : 1 null terminated `string` for the filename
+### SIZE : 1 null terminated `string` for the filename.
 Get the size of a file as a `short`.
 
 ```c
@@ -66,9 +65,51 @@ sysend();
 int size = read_short();
 ```
 
-### LSSZ
-### GTLS
-### EXEC
+### LSSZ : 1 null terminated `string` for the filename.
+Get the amount of files in a directory as a `char`.
+
+
+```c
+//Example code with syslib.h
+int count = fslist(name, currentDir);
+
+//Example code with only lib.h
+f(syssend, "LSSZ");
+syssend(name);
+sysend();
+int count = read_char();
+```
+
+### GTLS : `1 char` for the index.
+Index the current directory. Designed to be used with LSSZ to list a directory's files.
+Returns: null terminated string with filetype + filename
+examples: `Fim_a_file.txt` - `Dim_a_directory`
+
+```c
+//Example code with syslib.h
+fsgetindex(currentDir, x, filename, DIR_SIZE);
+
+//Example code with only lib.h
+f(syssend, "GTLS");
+write_char(index);
+syssend(currentDir);
+sysend();
+sysread(out, size);
+```
+
+### EXEC : 1 null terminated `string` for filename.
+Executes given filename with the bfk.lua Brainfuck interpreter the OS uses.
+
+```c
+//Example code with syslib.h
+exec(filename);
+
+//Example code with only lib.h
+f(syssend, "EXEC");
+syssend(filename);
+sysend();
+```
+
 ### MDIR
 ### DELF
 ### WRTE
