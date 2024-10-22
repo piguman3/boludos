@@ -1,3 +1,8 @@
+---
+title: File system syscalls
+layout: page
+---
+
 # File system syscalls
 
 - Note: More read and write fs instructions will be added in the future for ease of use (Read all, write X bytecount)
