@@ -168,6 +168,58 @@ sysend();
 bool exists = (read_char() == 1);
 ```
 
-### EFIL
-### FCPY
-### FMOV
+### EFIL : null terminated `string` for path
+Check if path exists and if it's a file, returns either 0 or 1
+
+```c
+//Example code with syslib.h
+bool exists = fsexistsfile(name, currentDir);
+
+//Example code with only lib.h
+f(syssend, "EFIL");
+syssend(path);
+sysend();
+bool exists = (read_char() == 1);
+```
+
+### FCPY : `1 char`, size of the source filename, `string` for source filename, null terminated `string` for the destination filename.
+Copies a file from a source path to a destination path
+
+```
+//Example code with syslib.h
+fscopy(currentDir, fileA, fileB);
+
+//Example code with only lib.h
+f(syssend, "FCPY");
+int i=0;
+while (fileA[i]!=0) {
+    i = i + 1;
+}
+write_char(i);
+syssend(currentDir);
+syssend(fileA);
+syssend(currentDir);
+syssend(fileB);
+sysend();
+```
+
+### FMOV : `1 char`, size of the source filename, `string` for source filename, null terminated `string` for the destination filename.
+Moves a file from a source path to a destination path
+
+```
+//Example code with syslib.h
+fsmove(currentDir, fileA, fileB);
+
+//Example code with only lib.h
+f(syssend, "FMOV");
+int i=0;
+while (fileA[i]!=0) {
+    i = i + 1;
+}
+write_char(i);
+syssend(currentDir);
+syssend(fileA);
+syssend(currentDir);
+syssend(fileB);
+sysend();
+```
