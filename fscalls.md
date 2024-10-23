@@ -14,7 +14,7 @@ Syscalls for interacting with ComputerCraft's file system. Like CC's file system
 Opened file handles are stored in a "file slot" table. To interact with most of the functions regarding file manipulation you will need to know the file slot of the file you have opened.
 
 ### OPEN : `2 chars` for mode, null terminated `string` for filename.
-Returns a file slot number. You can open up to 256 files at once.
+Returns a file slot number. You can open up to 255 files at once.
 
 The modes are made out of the operation, 'a', 'w', 'r', and if it's in text more or not 't', 'b' (Replicates CraftOS' FS)
 
